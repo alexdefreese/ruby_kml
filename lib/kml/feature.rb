@@ -12,7 +12,9 @@
 #   <Snippet maxLines="2">...</Snippet>   <!-- string -->
 #   <description>...</description>        <!-- string -->
 #   <LookAt>...</LookAt>
-#   <TimePrimitive>...</TimePrimitive>
+#   <TimeStamp>
+#      <when>....</when>
+#   </TimeStamp>
 #   <styleUrl>...</styleUrl>              <!-- anyURI -->
 #   <StyleSelector>...</StyleSelector>
 #   <Region>...</Region>
@@ -108,7 +110,7 @@ module KML #:nodoc:
     # Defines a camera viewpoint associated with any element derived from Feature. See LookAt.
     attr_accessor :look_at
     
-    attr_accessor :time_primitive
+    attr_accessor :time_stamp
     
     # URI (a URI equals [URL]#ID) of a Style or StyleMap defined in a Document. If the style is in the same file, 
     # use a # reference. If the style is defined in an external file, use a full URL along with # referencing. Examples:
@@ -148,7 +150,7 @@ module KML #:nodoc:
       xm.Snippet(snippet.text, snippet.max_lines) unless snippet.nil?
       
       xm.LookAt { look_at.render(xm) } unless look_at.nil?
-      xm.TimePrimitive { time_primitive.render(xm) } unless time_primitive.nil?
+      xm.TimeStamp { time_stamp.render(xm) } unless time_stamp.nil?
       xm.StyleSelector { style_selector.render(xm) } unless style_selector.nil?
     end
   end
@@ -157,5 +159,6 @@ end
 require 'kml/container'
 require 'kml/placemark'
 require 'kml/overlay'
+require 'kml/time_stamp'
 
 require 'kml/snippet'

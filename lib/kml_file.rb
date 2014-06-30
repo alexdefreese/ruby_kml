@@ -30,4 +30,4 @@ class KMLFile
 
 end
 
-require 'kml/object'
+require 'kml/object' 
